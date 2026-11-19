@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1223">
+  
+  <!-- Primary Meta Tags -->
+  <title>Base64 Image Studio — Enterprise In-Browser Converter | SPManchester</title>
+  <meta name="title" content="Base64 Image Studio — Enterprise In-Browser Converter | SPManchester">
+  <meta name="description" content="High-performance, privacy-first Base64 to JPG, PNG, WEBP, SVG, ICO, BMP, and PDF converter. Batch processing, client-side decoding, zero server uploads. Maintained by SPManchester Private Limited.">
+  <meta name="keywords" content="base64 to jpg, base64 to png, base64 image converter, base64 decoder, data url to image, batch base64 converter, privacy image converter, spmanchester, open source tools">
+  <meta name="author" content="Sayed Mudassar Akbar, SPManchester Private Limited">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spmanchester.com/">
+  <meta property="og:title" content="Base64 Image Studio — Enterprise In-Browser Converter">
+  <meta property="og:description" content="Convert Base64 data URLs and raw strings to JPG, PNG, WEBP, PDF, and more with zero server uploads. 100% client-side, fast & secure.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/SPManchester/base64-image-studio/main/docs/assets/banner.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://spmanchester.com/">
+  <meta property="twitter:title" content="Base64 Image Studio — By SPManchester Private Limited">
+  <meta property="twitter:description" content="Convert Base64 to JPG, PNG, WEBP & PDF with client-side privacy. Batch queue, custom resizing, and ZIP export.">
+  <meta property="twitter:image" content="https://raw.githubusercontent.com/SPManchester/base64-image-studio/main/docs/assets/banner.png">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Base64 Image Studio",
+    "url": "https://spmanchester.com/",
+    "description": "High-performance, privacy-first Base64 to JPG, PNG, WEBP, SVG, ICO, BMP, and PDF converter running 100% in the browser.",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "All modern browsers",
+    "author": {
+      "@type": "Person",
+      "name": "Sayed Mudassar Akbar"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "SPManchester Private Limited",
+      "url": "https://www.spmanchester.com",
+      "email": "info@spmanchester.com"
+    },
+    "license": "https://opensource.org/licenses/MIT"
+  }
+  </script>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+
+  <!-- Header / Navigation -->
+  <header class="nav wrap">
+    <a href="./" class="logo" aria-label="SPManchester Base64 Studio Home">
+      <span class="logo-square" aria-hidden="true">✦</span>
+      <span>SP</span><span class="logo-highlight">Manchester</span>
+      <span class="tool-label">Base64 Studio</span>
+    </a>
+    <div class="nav-links">
+      <span class="nav-chip"><span class="live-dot"></span> 100% In-Browser Privacy</span>
+      <a href="https://www.spmanchester.com" target="_blank" rel="noopener noreferrer">Company <span aria-hidden="true">↗</span></a>
+      <a href="#how">How It Works</a>
+      <a href="https://github.com/SPManchester" target="_blank" rel="noopener noreferrer" class="github-badge-link">GitHub <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main>
+    <section class="hero wrap">
+      <div class="eyebrow">
+        <span class="eyebrow-icon">✧</span> ENTERPRISE CLIENT-SIDE SUITE <span class="eyebrow-sep">·</span> POWERED BY SPMANCHESTER
+      </div>
+      <h1>
+        Convert <span class="format-pill source-pill">BASE64</span> to
+        <br>
+        <span class="format-pill target-pill" id="hero-target-pill">JPG & PNG</span>
+        <span class="gradient-word">effortlessly.</span>
+      </h1>
+      <p class="hero-sub">
+        An enterprise-grade, high-performance image decoding and conversion studio. Convert raw Base64 strings and data URLs into production-ready images with zero server uploads—your confidential data never leaves your device.
+      </p>
+      <div class="trust-strip">
+        <span>✧ 100% Free & Open-Source</span>
+        <span>🛡️ Zero Server Uploads (GDPR Safe)</span>
+        <span>⚡ Multi-Threaded In-Browser Engine</span>
+        <span>📦 Batch Queue & ZIP Export</span>
+      </div>
+    </section>
+
+    <!-- Workspace Grid -->
+    <section class="workspace wrap" aria-label="Base64 Image Conversion Workspace">
+      <!-- Left Panel: Input & Queue -->
+      <div class="panel upload-panel">
+        <div class="panel-top">
+          <div>
+            <div class="step-kicker">STEP 01</div>
+            <h2>Import Base64 Source</h2>
+          </div>
+          <span class="panel-badge">INPUT · BASE64 DATA</span>
+        </div>
+
+        <!-- Drag & Drop Zone -->
+        <div class="dropzone" id="dropzone" role="button" tabindex="0" aria-label="Choose or drop Base64 files">
+          <div class="upload-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8">
+              <path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5"/>
+              <path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/>
+            </svg>
+          </div>
+          <strong>Drop Base64 files here</strong>
+          <span class="drop-info">or click to browse from your computer</span>
+          <span class="choose-btn">Select .txt / .b64 Files <span aria-hidden="true">↗</span></span>
+          <small>Accepts .txt, .b64, data URLs · Up to 50 MB per file</small>
+          <input id="file-input" type="file" accept=".txt,.b64,text/plain" multiple hidden>
+        </div>
+
+        <!-- Direct Base64 Paste Area -->
+        <div id="base64-area" class="base64-area">
+          <label for="base64-text">Or paste raw Base64 / data URL string directly:</label>
+          <textarea id="base64-text" placeholder="data:image/png;base64,iVBORw0KGgo... or raw Base64 encoded string" spellcheck="false"></textarea>
+          <button id="add-base64" class="text-button" type="button">
+            Add pasted data to queue <span aria-hidden="true">→</span>
+          </button>
+        </div>
+
+        <!-- Queue Status & List -->
+        <div class="queue-head">
+          <span>PROCESSING QUEUE <span id="queue-count" class="number-badge">0</span></span>
+          <button id="clear-btn" type="button" class="text-button" disabled>Clear queue</button>
+        </div>
+        <div class="queue" id="queue">
+          <div class="empty-state">No files added yet. Drop files or paste strings above.</div>
+        </div>
+      </div>
+
+      <!-- Right Panel: Conversion Settings -->
+      <aside class="panel settings-panel">
+        <div class="panel-top">
+          <div>
+            <div class="step-kicker">STEP 02</div>
+            <h2>Output Configuration</h2>
+          </div>
+          <span class="panel-badge output-badge" id="output-badge">OUTPUT · JPG</span>
+        </div>
+
+        <!-- Visual Flow Display -->
+        <div class="convert-flow">
+          <span class="square format-square">BASE64</span>
+          <span class="flow-dash"></span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-dash"></span>
+          <span class="square format-square out-square" id="flow-target-square">JPG</span>
+        </div>
+
+        <!-- Format Selector -->
+        <label class="control-label" for="target-format">
+          TARGET FORMAT <span>Select output encoding</span>
+        </label>
+        <select id="target-format" class="select">
+          <option value="JPG" selected>JPG / JPEG (.jpg) — Compact Lossy Photo</option>
+          <option value="PNG">PNG (.png) — Lossless, Transparent</option>
+          <option value="WEBP">WEBP (.webp) — Modern High Efficiency</option>
+          <option value="PDF">PDF (.pdf) — Document Print Container</option>
+          <option value="SVG">SVG (.svg) — Vector Wrapper</option>
+          <option value="ICO">ICO (.ico) — 256x256 Favicon</option>
+          <option value="BMP">BMP (.bmp) — Uncompressed Bitmap</option>
+        </select>
+
+        <!-- Image Resizing -->
+        <label class="control-label" for="size-select">
+          RESIZE / SCALE <span>Aspect ratio locked</span>
+        </label>
+        <select id="size-select" class="select">
+          <option value="1">Keep original size (100%)</option>
+          <option value="0.75">Scale down to 75%</option>
+          <option value="0.5">Scale down to 50%</option>
+          <option value="0.25">Scale down to 25%</option>
+          <option value="custom">Custom target width (px)</option>
+        </select>
+
+        <div id="custom-box" hidden>
+          <label class="control-label" for="custom-width">CUSTOM WIDTH (PIXELS)</label>
+          <input class="select" id="custom-width" type="number" min="1" max="16000" value="1200">
+        </div>
+
+        <!-- Quality Control (for lossy formats) -->
+        <div id="quality-control">
+          <label class="control-label" for="quality">
+            COMPRESSION QUALITY <strong id="quality-value">90%</strong>
+          </label>
+          <input type="range" id="quality" min="30" max="100" value="90" step="5">
+          <div class="range-ends">
+            <span>Smaller file</span>
+            <span>Maximum fidelity</span>
+          </div>
+        </div>
+
+        <!-- Privacy Assurance -->
+        <div class="privacy-note">
+          <span class="lock-icon" aria-hidden="true">🛡️</span>
+          <div>
+            <strong>100% Client-Side Processing</strong>
+            <span>Your files are decoded directly inside your web browser engine. Absolutely zero data is transferred over the network to external servers.</span>
+          </div>
+        </div>
+
+        <!-- Convert Action Button -->
+        <button id="convert-btn" class="primary-btn" disabled type="button">
+          <span id="convert-label">Convert to JPG</span>
+          <span aria-hidden="true">→</span>
+        </button>
+        <div class="settings-footer">
+          <span id="status-text" role="status">Ready · Add Base64 inputs to begin</span>
+          <span>NO WATERMARKS · FREE FOREVER</span>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Step 3: Results Section -->
+    <section id="results-section" class="results wrap" hidden aria-label="Converted Files Gallery">
+      <div class="results-heading">
+        <div>
+          <div class="step-kicker">STEP 03</div>
+          <h2>Converted Images <span id="result-count" class="number-badge">0</span></h2>
+        </div>
+        <button type="button" id="download-all" class="secondary-btn">Download All as ZIP Archive ↓</button>
+      </div>
+      <div id="results-list" class="result-list"></div>
+    </section>
+
+    <!-- Feature & Architecture Highlights -->
+    <section class="benefits wrap" id="how">
+      <div class="benefit">
+        <span class="benefit-symbol">01 /</span>
+        <h3>Load Any Base64 Source</h3>
+        <p>Supports both clean raw Base64 data strings and RFC 2397 Data URLs (<code>data:image/...;base64,...</code>) with batch multi-file queuing.</p>
+      </div>
+      <div class="benefit">
+        <span class="benefit-symbol">02 /</span>
+        <h3>Enterprise Performance</h3>
+        <p>Decodes and encodes at native hardware speed via HTML5 Canvas and Web API primitives. Zero installation, zero cloud dependencies.</p>
+      </div>
+      <div class="benefit">
+        <span class="benefit-symbol">03 /</span>
+        <h3>Instant Single or ZIP Export</h3>
+        <p>Download individual converted files or automatically generate a clean, uncompressed PKZIP bundle generated on-the-fly in browser memory.</p>
+      </div>
+    </section>
+
+    <!-- Bottom Notice -->
+    <div class="bottom-notice wrap" id="format-notice">
+      Engineered for developer productivity and data confidentiality. Transparency is preserved when exporting to PNG and WEBP. White background rendering is applied automatically for JPG, BMP, and PDF exports.
+    </div>
+  </main>
+
+  <!-- Branded Footer -->
+  <footer class="footer wrap">
+    <div class="footer-brand">
+      <div class="logo">
+        <span class="logo-square">✦</span>
+        <span>SP</span><span class="logo-highlight">Manchester</span>
+      </div>
+      <p>Architecting enterprise digital solutions, cloud infrastructure, and open-source tooling.</p>
+      <div class="footer-meta">
+        <span>Maintained by <strong>Sayed Mudassar Akbar</strong></span>
+        <span>·</span>
+        <a href="mailto:info@spmanchester.com">info@spmanchester.com</a>
+        <span>·</span>
+        <a href="https://www.spmanchester.com" target="_blank" rel="noopener noreferrer">www.spmanchester.com</a>
+      </div>
+    </div>
+    <div class="footer-copy">
+      <p>© 2026 <strong>SPManchester Private Limited</strong>. All rights reserved.</p>
+      <p class="license-note">Released under the permissive <a href="LICENSE">MIT License</a>.</p>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
